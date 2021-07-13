@@ -1,0 +1,156 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Atlas",
+    "description": "Essa é uma documentação sobre a Atlas API"
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Cria um usuário",
+        "description": "Cria um novo usuário",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "admin": {
+                    "type": "boolean"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Rocketseat",
+                  "email": "oi@rocketseat.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Operação realizada com sucesso"
+          },
+          "400": {
+            "description": "User already exists"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "List all users",
+        "description": "List all users",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "admin": {
+                        "type": "boolean"
+                      },
+                      "email": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Show a user",
+        "description": "Show user profile",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/users/{user_id}/admin": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Turn user into admin",
+        "description": "Update a user to admin",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    }
+  }
+}
